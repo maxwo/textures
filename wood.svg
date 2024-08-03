@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.dev/svgjs" viewBox="0 0 30 30" width="600" height="600">
+  <defs>
+
+    <filter id="wood">
+
+      <feTurbulence type="turbulence" baseFrequency="0.1 0.03" seed="566" result="zebraTurbulence">
+      </feTurbulence>
+
+      <feSpecularLighting in="zebraTurbulence" surfaceScale="10" specularConstant="3.5" specularExponent="100%" lighting-color="#562b00" result="zebraLighting">
+        <feDistantLight azimuth="3" elevation="80"></feDistantLight>
+      </feSpecularLighting>
+
+      <feTurbulence type="turbulence" baseFrequency="0.02 0.001" numOctaves="10" seed="566" x="0%" y="0%" width="100%" height="100%" result="turbulence">
+      </feTurbulence>
+
+      <feSpecularLighting surfaceScale="14" specularConstant="2.5" specularExponent="50%" lighting-color="#562b00" x="0%" y="0%" width="100%" height="100%" in="turbulence" result="linesLighting">
+        <feDistantLight azimuth="6" elevation="80"></feDistantLight>
+      </feSpecularLighting>
+
+      <feBlend in2="linesLighting" in="zebraLighting" mode="normal" result="blended" />
+
+      <feTurbulence type="turbulence" baseFrequency="5 0.1" seed="566" result="grainTurbulence">
+      </feTurbulence>
+
+      <feSpecularLighting surfaceScale="50" specularConstant="0.5" specularExponent="1%" lighting-color="#ff0000" x="0%" y="0%" width="100%" height="100%" in="grainTurbulence" result="grainLighting">
+        <feDistantLight azimuth="6" elevation="100"></feDistantLight>
+      </feSpecularLighting>
+
+      <feBlend in2="blended" in="grainLighting" mode="multiply" result="allBlended" />
+
+      <feGaussianBlur in="allBlended" stdDeviation="0.018" result="smoothed">
+      </feGaussianBlur>
+
+      <feColorMatrix in="smoothed" values="0 0 0 .2581828529215958 .2581828529215958
+                                           0 0 0 .0595112381629812 .1022417330881013
+                                           0 0 0 .006995410187265387 .024157632448504756
+                                           0 0 0 -0.5  0.8" /> <!-- Contrast -->
+
+
+
+<!--
+Lighter:
+0.7304607400903537 0.4793201831008268 0.24228112246555486
+0.6104955708078648 0.40197777983219574 0.20507873639031693
+
+Darker:
+0.2581828529215958 0.1022417330881013 0.024157632448504756
+0.2581828529215958 0.0595112381629812 0.006995410187265387
+-->
+
+    </filter>
+  </defs>
+  <rect width="30" height="30" fill="#562b00" filter="url(#wood)"></rect>
+</svg>
